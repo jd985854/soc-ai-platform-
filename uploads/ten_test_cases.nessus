@@ -1,0 +1,115 @@
+<NessusClientData_v2>
+  <Report name="Realistic 10-Test Suite">
+
+    <!-- ============================================ -->
+    <!-- CASE 1: TRUE POSITIVE - SSH Brute Force      -->
+    <!-- Prod IP + High CVSS + Repeated failed logs   -->
+    <!-- ============================================ -->
+    <ReportHost name="192.168.1.10">
+      <ReportItem pluginID="11111" cve="CVE-2023-5678" cvss_base_score="7.5" risk_factor="High" port="22" pluginName="SSH Weak Password Policy">
+        <description>SSH server allows brute-force password guessing.</description>
+        <solution>Enforce account lockout and strong passwords.</solution>
+      </ReportItem>
+    </ReportHost>
+
+    <!-- ============================================ -->
+    <!-- CASE 2: TRUE POSITIVE - Apache Struts RCE    -->
+    <!-- Prod IP + Critical CVSS + Exploit logs       -->
+    <!-- ============================================ -->
+    <ReportHost name="10.10.10.25">
+      <ReportItem pluginID="22222" cve="CVE-2017-5638" cvss_base_score="9.8" risk_factor="Critical" port="8080" pluginName="Apache Struts2 RCE">
+        <description>Apache Struts2 remote code execution vulnerability.</description>
+        <solution>Upgrade Struts to 2.5.12+.</solution>
+      </ReportItem>
+    </ReportHost>
+
+    <!-- ============================================ -->
+    <!-- CASE 3: TRUE POSITIVE - Path Traversal       -->
+    <!-- Prod IP + Logs containing ../..             -->
+    <!-- ============================================ -->
+    <ReportHost name="192.168.1.10">
+      <ReportItem pluginID="33333" cve="CVE-2023-4567" cvss_base_score="7.5" risk_factor="High" port="80" pluginName="Path Traversal">
+        <description>Directory traversal vulnerability in file download.</description>
+        <solution>Validate user input and restrict file paths.</solution>
+      </ReportItem>
+    </ReportHost>
+
+    <!-- ============================================ -->
+    <!-- CASE 4: TRUE POSITIVE - SMBGhost (CVE-2020-0796) -->
+    <!-- Prod IP + Critical CVSS                      -->
+    <!-- ============================================ -->
+    <ReportHost name="10.10.10.25">
+      <ReportItem pluginID="44444" cve="CVE-2020-0796" cvss_base_score="10.0" risk_factor="Critical" port="445" pluginName="SMBGhost Remote Code Execution">
+        <description>SMBv3 compression vulnerability allows pre-auth RCE.</description>
+        <solution>Apply Microsoft patch KB4551762.</solution>
+      </ReportItem>
+    </ReportHost>
+
+    <!-- ============================================ -->
+    <!-- CASE 5: FALSE POSITIVE - Internal CI/CD      -->
+    <!-- Prod IP, but logs show ONLY internal traffic -->
+    <!-- ============================================ -->
+    <ReportHost name="192.168.1.10">
+      <ReportItem pluginID="55555" cve="CVE-2023-6789" cvss_base_score="8.0" risk_factor="High" port="443" pluginName="Weak TLS Ciphers">
+        <description>Server supports weak TLS 1.0 ciphers.</description>
+        <solution>Disable TLS 1.0 and weak ciphers.</solution>
+      </ReportItem>
+    </ReportHost>
+
+    <!-- ============================================ -->
+    <!-- CASE 6: FALSE POSITIVE - SSL Noise           -->
+    <!-- Dropped by Rule Filter                       -->
+    <!-- ============================================ -->
+    <ReportHost name="10.0.0.5">
+      <ReportItem pluginID="66666" cve="N/A" cvss_base_score="4.0" risk_factor="None" port="443" pluginName="SSL Certificate Expiry">
+        <description>SSL certificate expires in 60 days.</description>
+        <solution>Renew certificate.</solution>
+      </ReportItem>
+    </ReportHost>
+
+    <!-- ============================================ -->
+    <!-- CASE 7: FALSE POSITIVE - Low CVSS Info       -->
+    <!-- Dropped by Rule Filter (< 4.0)               -->
+    <!-- ============================================ -->
+    <ReportHost name="192.168.1.30">
+      <ReportItem pluginID="77777" cve="CVE-2023-7890" cvss_base_score="2.5" risk_factor="None" port="123" pluginName="NTP Clock Skew">
+        <description>NTP server clock skew detected.</description>
+        <solution>Synchronize NTP server.</solution>
+      </ReportItem>
+    </ReportHost>
+
+    <!-- ============================================ -->
+    <!-- CASE 8: FALSE POSITIVE - Test Environment    -->
+    <!-- Dropped by Context Filter                    -->
+    <!-- ============================================ -->
+    <ReportHost name="192.168.1.20">
+      <ReportItem pluginID="88888" cve="CVE-2023-8901" cvss_base_score="9.0" risk_factor="Critical" port="3306" pluginName="MySQL Remote Root Access">
+        <description>MySQL server allows remote root login without password.</description>
+        <solution>Remove anonymous root access.</solution>
+      </ReportItem>
+    </ReportHost>
+
+    <!-- ============================================ -->
+    <!-- CASE 9: FALSE POSITIVE - Nessus Scanner Noise-->
+    <!-- Dropped by Rule Filter                       -->
+    <!-- ============================================ -->
+    <ReportHost name="10.0.0.5">
+      <ReportItem pluginID="99999" cve="N/A" cvss_base_score="0.0" risk_factor="None" port="0" pluginName="Nessus Host Discovery">
+        <description>Nessus host discovery plugin.</description>
+        <solution>N/A</solution>
+      </ReportItem>
+    </ReportHost>
+
+    <!-- ============================================ -->
+    <!-- CASE 10: TRUE POSITIVE - No Logs (Low Prio)  -->
+    <!-- Prod IP + Critical Vuln, but logs are clean  -->
+    <!-- ============================================ -->
+    <ReportHost name="192.168.1.30">
+      <ReportItem pluginID="101010" cve="CVE-2023-9012" cvss_base_score="9.0" risk_factor="Critical" port="8080" pluginName="Tomcat Manager Exposed">
+        <description>Tomcat manager interface is exposed without authentication.</description>
+        <solution>Password-protect the manager interface.</solution>
+      </ReportItem>
+    </ReportHost>
+
+  </Report>
+</NessusClientData_v2>

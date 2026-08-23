@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI SOC Triage Platform</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0d1117; color: #c9d1d9; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { background: #161b22; padding: 40px; border-radius: 16px; border: 1px solid #30363d; width: 600px; text-align: center; }
+        h1 { color: #58a6ff; font-size: 24px; }
+        .sub { color: #8b949e; font-size: 14px; margin-bottom: 30px; }
+        .file-input { background: #0d1117; border: 1px dashed #30363d; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        input[type="file"] { color: #c9d1d9; display: block; margin: 10px auto; }
+        button { background: #238636; color: white; border: none; padding: 12px 32px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 16px; }
+        button:hover { background: #2ea043; }
+        .note { margin-top: 20px; color: #8b949e; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧠 AI SOC Triage Engine</h1>
+        <p class="sub">Upload Nessus + Apache Logs → Get Prioritized PDF Report</p>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <div class="file-input">
+                <label>📄 Nessus XML:</label><br>
+                <input type="file" name="nessus_file" accept=".nessus,.xml" required>
+            </div>
+            <div class="file-input">
+                <label>📝 Apache Logs:</label><br>
+                <input type="file" name="log_file" accept=".log,.txt" required>
+            </div>
+            <button type="submit">🚀 Triage & Generate Report</button>
+        </form>
+        <p class="note">The system filters false positives, correlates logs, and uses AI consensus voting.</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<NessusClientData_v2>
+  <Report name="Comprehensive Scan">
+    
+    <!-- VULN 1: TRUE POSITIVE (Prod + SQLi + Logs match) -->
+    <ReportHost name="192.168.1.10">
+      <ReportItem pluginID="12345" cve="CVE-2023-1234" cvss_base_score="9.8" risk_factor="Critical" port="80" pluginName="SQL Injection">
+        <description>SQL Injection vulnerability in login form.</description>
+        <solution>Apply vendor patch.</solution>
+      </ReportItem>
+    </ReportHost>
+    
+    <!-- VULN 2: TRUE POSITIVE (Prod + XSS + Logs match) -->
+    <ReportHost name="10.10.10.25">
+      <ReportItem pluginID="54321" cve="CVE-2023-4567" cvss_base_score="7.5" risk_factor="High" port="443" pluginName="Cross-Site Scripting (XSS)">
+        <description>Reflected XSS vulnerability in search parameter.</description>
+        <solution>Sanitize user input.</solution>
+      </ReportItem>
+    </ReportHost>
+    
+    <!-- VULN 3: TRUE POSITIVE (Prod + Log4Shell + Logs match) -->
+    <ReportHost name="10.10.10.25">
+      <ReportItem pluginID="67890" cve="CVE-2021-44228" cvss_base_score="10.0" risk_factor="Critical" port="443" pluginName="Apache Log4j Remote Code Execution">
+        <description>Log4Shell vulnerability in logging framework.</description>
+        <solution>Upgrade Log4j to 2.15.0+.</solution>
+      </ReportItem>
+    </ReportHost>
+    
+    <!-- VULN 4: FALSE POSITIVE (Test Environment - Dropped by Context) -->
+    <ReportHost name="192.168.1.20">
+      <ReportItem pluginID="11111" cve="CVE-2023-5678" cvss_base_score="8.0" risk_factor="High" port="22" pluginName="SSH Weak Algorithms">
+        <description>SSH server supports weak encryption algorithms.</description>
+        <solution>Disable weak ciphers.</solution>
+      </ReportItem>
+    </ReportHost>
+    
+    <!-- VULN 5: FALSE POSITIVE (SSL Noise - Dropped by Rule) -->
+    <ReportHost name="10.0.0.5">
+      <ReportItem pluginID="22222" cve="N/A" cvss_base_score="4.0" risk_factor="None" port="443" pluginName="SSL Certificate Expiry">
+        <description>SSL certificate expires in 30 days.</description>
+        <solution>Renew certificate.</solution>
+      </ReportItem>
+    </ReportHost>
+    
+    <!-- VULN 6: FALSE POSITIVE (Low CVSS - Dropped by Rule) -->
+    <ReportHost name="192.168.1.30">
+      <ReportItem pluginID="33333" cve="CVE-2023-6789" cvss_base_score="2.0" risk_factor="None" port="123" pluginName="NTP Info Disclosure">
+        <description>NTP server leaks system time.</description>
+        <solution>Restrict NTP access.</solution>
+      </ReportItem>
+    </ReportHost>
+    
+  </Report>
+</NessusClientData_v2>

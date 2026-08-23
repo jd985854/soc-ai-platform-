@@ -39,39 +39,35 @@ A **vendor-independent, AI-powered triage platform** that:
 ## 🚀 Quick Start (Installation)
 
 ### 1. Clone the Repository
-```bash
-git clone https://github.com/yourusername/soc-ai-platform.git
+```
+git clone https://github.com/yourusername/soc-ai-platform.git](https://github.com/jd985854/soc-ai-platform-.git
 cd soc-ai-platform
-
+```
 2. Set Up Python Virtual Environment
-bash
-
+```
 python3 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
-
+```
 3. Install Dependencies
-bash
-
+```
 pip install -r requirements.txt
-
+```
 4. Install Ollama (Local LLM)
-bash
-
+```
 # Install Ollama
 curl -fsSL https://ollama.com/install.sh | sh
 
 # Pull the model (2GB download)
 ollama pull llama3.2:3b
-
+```
 5. Run the Application
-bash
-
+```
 python app.py
-
+```
 6. Open Your Browser
-
+```
 Navigate to: http://127.0.0.1:5000
-
+```
 Upload a .nessus file and an Apache .log file, then click "Triage & Generate Report".
 
 🔮 Roadmap (Future Features)
